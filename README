@@ -1,5 +1,11 @@
 This is an adaptation of the jQuery Live Form Validation found at http://www.geektantra.com/2009/09/jquery-live-form-validation/ for Twitter Bootstrap. The modified script will allow for live form validation using the Twitter Bootstrap HTML pattern for forms.
 
+The main script is jquery.validate.js. This has a validate method that you can call on any jQuery input object.
+For instructions please see the link above. The changes for Twitter Bootstrap are the names of couple of the parameters, and using a container div w/ class=validation-container instead of the input field to highlight a validation error.
+
+The jquery.validation.functions.js file has not been modified in anyway and simply provides helper methods for date and radio button validation.
+
+
 Original Script License: http://www.apache.org/licenses/LICENSE-2.0
 
 Original Script Copyright:
