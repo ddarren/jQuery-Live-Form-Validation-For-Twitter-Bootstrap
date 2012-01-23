@@ -1,0 +1,12 @@
+This is an adaptation of the jQuery Live Form Validation found at http://www.geektantra.com/2009/09/jquery-live-form-validation/ for Twitter Bootstrap. The modified script will allow for live form validation using the Twitter Bootstrap HTML pattern for forms.
+
+Original Script License: http://www.apache.org/licenses/LICENSE-2.0
+
+Original Script Copyright:
+@author GeekTantra
+@date 20 September 2009
+
+ 
+
+
+
