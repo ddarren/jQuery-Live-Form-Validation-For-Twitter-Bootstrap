@@ -1,3 +1,9 @@
+----------------------------------
+UPDATED 4/5/2012: Now works with Twitter Bootstrap 2 and its new control-group css class. 
+
+Should still work with earlier versions of Bootstrap, as long as the error_container_class option parameter is passed in (default value is for Bootstrap v2). Other option is just to clone the revision 10f0dd18f0e648fa2e8a69256e4a850654d97a7b from Jan 22, 2012.
+----------------------------------
+
 This is an adaptation of the jQuery Live Form Validation found at http://www.geektantra.com/2009/09/jquery-live-form-validation/ for Twitter Bootstrap. The modified script will allow for live form validation using the Twitter Bootstrap HTML pattern for forms.
 
 The main script is jquery.validate.js. This has a validate method that you can call on any jQuery input object.
