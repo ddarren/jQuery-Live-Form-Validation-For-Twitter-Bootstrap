@@ -11,7 +11,7 @@
             expression: "return true;",
             message: "",
             error_message_class: "help-inline",
-            error_container_class: "validation-container",
+            error_container_class: "control-group",
             live: true
         }, options);
         var SelfID = jQuery(this).attr("id");
@@ -72,7 +72,7 @@
             if (!validation_state) {
                 if (jQuery(id).next('.' + options['error_message_class']).length == 0) {
                     jQuery(id).after('<span class="' + options['error_message_class'] + '">' + options['message'] + '</span>');
-					jQuery(id).parents("div .clearfix").addClass("error")
+					jQuery(id).parents("div ." + options['error_container_class']).addClass("error")
                 }
                 if (ValidationErrors[FormID].join("|").search(id) == -1) 
                     ValidationErrors[FormID].push(id);
