@@ -55,11 +55,7 @@
         }
         jQuery(this).parents("form").submit(function(){
 
-            if (validate_field('#' + SelfID)) {
-				
-				jQuery('.' + options['error_message_class']).remove();
-				jQuery('.' + options['error_container_class']).removeClass('error');
-			
+            if (validate_field('#' + SelfID)) {			
                 return true;
 			}
             else 
@@ -74,6 +70,8 @@
                     jQuery(id).after('<span class="' + options['error_message_class'] + '">' + options['message'] + '</span>');
 					jQuery(id).parents("div ." + options['error_container_class']).addClass("error")
                 }
+
+
                 if (ValidationErrors[FormID].join("|").search(id) == -1) 
                     ValidationErrors[FormID].push(id);
                 return false;
