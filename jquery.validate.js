@@ -2,7 +2,8 @@
  * @author GeekTantra
  * @date 20 September 2009
  * http://www.geektantra.com/2009/09/jquery-live-form-validation/
- * Modified by dsmith: added support for twitter boostrap
+ * Modified by ddarren: added support for twitter boostrap
+ * https://github.com/ddarren/jQuery-Live-Form-Validation-For-Twitter-Bootstrap
  */
 (function(jQuery){
     var ValidationErrors = new Array();
@@ -68,7 +69,7 @@
             if (!validation_state) {
                 if (jQuery(id).next('.' + options['error_message_class']).length == 0) {
                     jQuery(id).after('<span class="' + options['error_message_class'] + '">' + options['message'] + '</span>');
-					jQuery(id).parents("div ." + options['error_container_class']).addClass("error")
+					          jQuery(id).parents("div." + options['error_container_class']).addClass("error");
                 }
 
 
