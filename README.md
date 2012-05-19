@@ -7,7 +7,7 @@ Should still work with earlier versions of Bootstrap, as long as the error_conta
 ## About
 This is an adaptation of the jQuery Live Form Validation found [here](http://www.geektantra.com/2009/09/jquery-live-form-validation/) for Twitter Bootstrap. The modified script will allow for live form validation using the Twitter Bootstrap HTML pattern for forms.
 
-The scripts in this repository do not make use of Rails model validation helpers. If you wish to see a solution that utilizes Rails validations helpers to do live validation with Twitter Bootstrap, please checkout my [blog post](http://www.ddarrensmith.com/blog/2012/05/17/ruby-on-rails-client-side-validation-with-validation-helpers-and-twitter-bootstrap/]).
+The scripts in this repository do not make use of Rails model validation helpers. If you wish to see a solution that utilizes Rails validations helpers to do live validation with Twitter Bootstrap, please checkout my [blog post](http://www.ddarrensmith.com/blog/2012/05/17/ruby-on-rails-client-side-validation-with-validation-helpers-and-twitter-bootstrap/).
 
 The main script is jquery.validate.js. This has a validate method that you can call on any jQuery input object. The changes for Twitter Bootstrap are the names of couple of the parameters, and using a container div w/ class=control-group instead of the input field to highlight a validation error.
 
