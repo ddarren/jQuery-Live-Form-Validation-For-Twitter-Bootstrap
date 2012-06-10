@@ -56,7 +56,8 @@
                 });
                 // when the input gains focused remove error message
                 jQuery(this).bind('focus keypress', function(){
-                    jQuery(this).next('.' + options['error_message_class']).fadeOut("fast", function(){
+                    var jQueryObjectBeforeErrorMessage = getjQueryObjectBeforeErrorMessage(jQuery(this)); 
+                    jQueryObjectBeforeErrorMessage.next('.' + options['error_message_class']).fadeOut("fast", function(){
                         jQuery(this).remove();
                     });
     				jQuery(this).parents("." + options['error_container_class']).removeClass('error');
@@ -79,8 +80,11 @@
             var expression = 'function Validate(){' + options['expression'].replace(/VAL/g, 'jQuery(\'#' + self + '\').val()') + '} Validate()';
             var validation_state = eval(expression);
             if (!validation_state) {
-                if (jQuery(id).next('.' + options['error_message_class']).length == 0) {
-                    jQuery(id).after('<span class="' + options['error_message_class'] + '">' + options['message'] + '</span>');
+                jQueryObjectBeforeErrorMessage = getjQueryObjectBeforeErrorMessage(jQuery(id));
+                
+                if (jQueryObjectBeforeErrorMessage.next('.' + options['error_message_class']).length == 0) {
+
+                    jQueryObjectBeforeErrorMessage.after('<span class="' + options['error_message_class'] + '">' + options['message'] + '</span>');
 					          jQuery(id).parents("div." + options['error_container_class']).addClass("error");
                 }
 
@@ -96,6 +100,17 @@
                 }
                 return true;
             }
+        }
+        
+        function getjQueryObjectBeforeErrorMessage(inputjQueryObject)
+        {
+             // check see if the twitter bootstrap appended text span tag is used
+            if(inputjQueryObject.next().hasClass("add-on"))
+            {
+              return inputjQueryObject.next();
+            }
+            
+            return inputjQueryObject;
         }
     };
     //  Callback that is called if validation is successful
