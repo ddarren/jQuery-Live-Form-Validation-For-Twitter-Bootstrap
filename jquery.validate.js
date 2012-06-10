@@ -16,8 +16,11 @@
             live: true
         }, options);
         var SelfID = jQuery(this).attr("id");
+        
+        // getting unix_time to make a unique id for form if the form doesn't already have an one
         var unix_time = new Date();
         unix_time = parseInt(unix_time.getTime() / 1000);
+        //give the form an id if it doesn't already have one
         if (!jQuery(this).parents('form:first').attr("id")) {
             jQuery(this).parents('form:first').attr("id", "Form_" + unix_time);
         }
@@ -26,7 +29,9 @@
             ValidationErrors[FormID] = new Array();
         }
         if (options['live']) {
+            // if the passed in element is a container with inputs
             if (jQuery(this).find('input').length > 0) {
+                // once an input loses focus, run validation
                 jQuery(this).find('input').bind('blur', function(){
                     if (validate_field("#" + SelfID, options)) {
                         if (options.callback_success) 
@@ -37,15 +42,19 @@
                             options.callback_failure(this);
                     }
                 });
+                // remove error message once an input is focused on 
                 jQuery(this).find('input').bind('focus keypress click', function(){
                     jQuery("#" + SelfID).next('.' + options['error_message_class']).remove();
                     jQuery("#" + SelfID).parents("." + options['error_container_class']).removeClass('error');
                 });
             }
+            // if the passed in element is input to validate itselft
             else {
+                // when  the input loses focus, validate
                 jQuery(this).bind('blur', function(){
                     validate_field(this);
                 });
+                // when the input gains focused remove error message
                 jQuery(this).bind('focus keypress', function(){
                     jQuery(this).next('.' + options['error_message_class']).fadeOut("fast", function(){
                         jQuery(this).remove();
@@ -54,14 +63,17 @@
                 });
             }
         }
+        // perform validation when form is submitted - needed by both live and non-live validation
         jQuery(this).parents("form").submit(function(){
 
             if (validate_field('#' + SelfID)) {			
                 return true;
-			}
+                }
             else 
                 return false;
         });
+        
+        // function that does the actual validation
         function validate_field(id){
             var self = jQuery(id).attr("id");
             var expression = 'function Validate(){' + options['expression'].replace(/VAL/g, 'jQuery(\'#' + self + '\').val()') + '} Validate()';
@@ -86,6 +98,7 @@
             }
         }
     };
+    //  Callback that is called if validation is successful
     jQuery.fn.validated = function(callback){
         jQuery(this).each(function(){
             if (this.tagName == "FORM") {
